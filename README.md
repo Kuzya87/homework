@@ -2,22 +2,18 @@
 
 1. По основной части ДЗ всё было успешно выполнено:
 
-        Apply complete! Resources: 9 added, 0 changed, 0 destroyed.
-
-        Outputs:
-
-        database_host_fqdn = tolist([
-          "rc1b-u6n53aehka3erolg.mdb.yandexcloud.net",
-          "rc1c-13fpnl73qqd5t9hg.mdb.yandexcloud.net",
-        ])
-        load_balancer_public_ip = tolist([
-          "51.250.27.61",
-        ])
+        --- PASS: TestEndToEndDeploymentScenario (618.91s)
+        PASS
+        ok  	test	619.200s
     
-    Удаление также прошло успешно.
+    Делал полный прогон пару раз.
+    Также у меня всё делается от сервисного аккаунта, поэтому команда такая:
 
-2. Задание со звёздочкой успешно выполнено - вручную создан сервисный аккаунт, ему назначены права на каталог и Terraform всё выполняет от его имени.
+        go test -v ./ -timeout 30m -folder '<folder_id>' -svckeyfile "./test/key.json" -sshkeypath "<path to private yc key>"
 
-3. Задание с двумя звёдочками выполнено.
+2. Задание со звёздочкой успешно выполнено.
+    При этом я решил проверять доступность БД не отдельно по хостам кластера MySQL, а используя кластерный FQDN, смотрящий на MASTER-хост:
 
-    Удалось использовать единственный динамический блок target для yandex_lb_target_group, так как я загнал в одну local-переменную wp-app-vm-list список цельных объектов всех ВМ wp-app и прошёлся по этому списку через for_each.
+        c-<cluster_id>.rw.mdb.yandexcloud.net
+
+    Хотя конечно можно было получать в тесте список FQDN хостов и использовать конструкцию "for .. range".

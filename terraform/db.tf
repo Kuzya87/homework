@@ -2,6 +2,7 @@ locals {
   dbuser = tolist(yandex_mdb_mysql_cluster.wp_mysql.user.*.name)[0]
   dbpassword = tolist(yandex_mdb_mysql_cluster.wp_mysql.user.*.password)[0]
   dbhosts = yandex_mdb_mysql_cluster.wp_mysql.host.*.fqdn
+  dbclusterfqdn = format("c-%s.rw.mdb.yandexcloud.net", yandex_mdb_mysql_cluster.wp_mysql.id)
   dbname = tolist(yandex_mdb_mysql_cluster.wp_mysql.database.*.name)[0]
 }
 
