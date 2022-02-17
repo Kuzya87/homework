@@ -29,7 +29,12 @@ output "database_name" {
   value = local.dbname
 }
 
+# output "vm_linux_public_ip_address" {
+#   description = "Virtual machine IP"
+#   value = yandex_compute_instance.wp-app-a[0].network_interface[0].nat_ip_address
+# }
+
 output "vm_linux_public_ip_address" {
   description = "Virtual machine IP"
-  value = yandex_compute_instance.wp-app-a[0].network_interface[0].nat_ip_address
+  value = local.wp-app-vm-list[*].network_interface[0].nat_ip_address
 }

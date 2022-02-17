@@ -33,10 +33,6 @@ override.tf.json
 .terraformrc
 terraform.rc
 
-# Others files
-.terraform.*
-key.json
-
 # Created by https://www.toptal.com/developers/gitignore/api/go
 # Edit at https://www.toptal.com/developers/gitignore?templates=go
 
@@ -62,3 +58,10 @@ vendor
 Godeps
 
 # End of https://www.toptal.com/developers/gitignore/api/go
+
+# Others files and catalogs
+.terraform.lock.hcl
+key.json
+.test-data/
+__pycache__/
+ansible.log

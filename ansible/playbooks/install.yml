@@ -1,0 +1,5 @@
+- hosts: yacloud
+  become: yes
+
+  roles:
+    - role: wordpress

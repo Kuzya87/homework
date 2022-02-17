@@ -1,0 +1,6 @@
+plugin: yacloud_compute
+yacloud_token: "AQAAAAADuTEoAATuwVSGlaTRU0S-qiqBvOLuD2o"
+yacloud_clouds:
+  - cloud-kuzya-yuriy
+yacloud_folders:
+  - otus

@@ -1,0 +1,4 @@
+---
+collections:
+# For apache2_module
+- community.general
